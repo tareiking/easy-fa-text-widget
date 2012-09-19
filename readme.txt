@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, icons
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 0.0.2
+Stable tag: 0.0.1
 License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -28,9 +28,6 @@ None
 2. The display.
 
 == Changelog ==
-
-= 0.0.2 =
-* Fix Typo
 
 = 0.0.1 =
 * Initial Release

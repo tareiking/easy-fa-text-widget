@@ -6,7 +6,7 @@ Description: Basically is a text widget but with icon selector based on font-awe
 Author: Arya Prakasa
 Author URI: http://prakasa.me/
 
-Version: 0.0.2
+Version: 0.0.1
 
 License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
