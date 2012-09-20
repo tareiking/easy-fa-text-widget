@@ -94,7 +94,7 @@ class Widget_Text_Icon extends WP_Widget {
 
 		/** sort the array */
 		$icons = (array) $this->icon_type;
-		sort($icons);
+		sort( $icons );
 
 		?>
 
@@ -104,7 +104,7 @@ class Widget_Text_Icon extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose icon', 'ssiw' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
 				<?php
-				foreach ( (array) $this->icon_type as $icon ) {
+				foreach ( $icons as $icon ) {
 					printf( '<option value="%s" %s>%s</option>', $icon, selected( $icon, $instance['icon'], 0 ), $icon );
 				}
 				?>
