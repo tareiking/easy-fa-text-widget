@@ -6,7 +6,7 @@ Description: Basically is a text widget but with icon selector based on font-awe
 Author: Arya Prakasa
 Author URI: http://prakasa.me/
 
-Version: 0.1
+Version: 0.2
 
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -101,7 +101,7 @@ class Widget_Text_Icon extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose icon', 'ssiw' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose icon', 'wti' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
 				<?php
 				foreach ( $icons as $icon ) {
@@ -109,7 +109,7 @@ class Widget_Text_Icon extends WP_Widget {
 				}
 				?>
 			</select>
-			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Size', 'ssiw' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Size', 'wti' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'size' ); ?>" name="<?php echo $this->get_field_name( 'size' ); ?>">
 				<?php
 				foreach ( (array) $this->sizes as $size ) {
