@@ -5,8 +5,8 @@ Tags: widget, icons
 Requires at least: 3.2
 Tested up to: 3.4.2
 Stable tag: 0.0.1
-License: GNU General Public License v2.0 (or later)
-License URI: http://www.opensource.org/licenses/gpl-license.php
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
