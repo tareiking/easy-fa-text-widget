@@ -28,6 +28,8 @@ None
 2. The display.
 
 == Changelog ==
+= 0.1 =
+* Fix GPL license to make it compatible with GPLv3 or later
 
 = 0.0.1 =
 * Initial Release
