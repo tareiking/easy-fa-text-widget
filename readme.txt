@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, icons
 Requires at least: 3.2
 Tested up to: 3.4.2
-Stable tag: 0.0.1
+Stable tag: 0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,9 @@ None
 2. The display.
 
 == Changelog ==
+= 0.2 =
+* Fix GPL license to make it compatible with GPLv3 or later
+
 = 0.1 =
 * Fix GPL license to make it compatible with GPLv3 or later
 
