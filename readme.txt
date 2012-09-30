@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Arya Prakasa
+Contributors: aprakasa
 Donate link: -
 Tags: widget,
 Requires at least: 3.2
