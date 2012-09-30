@@ -9,7 +9,6 @@ License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
 This plugin add additional widget area that can be slide up and down.
-Very useful when your site have lot of information to show but doesnt have enough space.
 
 == Description ==
 
