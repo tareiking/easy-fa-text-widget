@@ -22,7 +22,7 @@ Note: This plugin only supports Genesis child themes.
 1. Upload the entire `Genesis Widget Toggle` folder to the `/wp-content/plugins/` directory
 1. DO NOT change the name of the Genesis Widget Toggle` folder
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Drag and drop 'Genesis Widget Toggle' into active sidebar
+1. Drag and drop available widget into Widget Toggle Left, Middle and Right
 
 == Frequently Asked Questions ==
 
