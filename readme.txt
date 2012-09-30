@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: aprakasa
 Donate link: -
-Tags: widget,
+Tags: widget, responsive, genesis, genesiswp, studiopress
 Requires at least: 3.2
 Tested up to: 3.5 beta 1
 Stable tag: 0.1
