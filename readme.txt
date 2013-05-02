@@ -1,5 +1,5 @@
 === Widget Text Icon ===
-Contributors: aprakasa, ayothemes
+Contributors: aprakasa, AyoThemes
 Donate link: http://prakasa.me/go/donation
 Tags: widget, icons
 Requires at least: 3.2
