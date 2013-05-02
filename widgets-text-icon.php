@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Widgets Text Icon
-Plugin URI: https://github.com/aryaprakasa/widget-text-icon
-Description: Basically is a text widget but with icon selector based on font-awesome.
+Plugin URI: https://wordpress.org/extend/plugins/widget-text-icon/
+Description: Basically it just a WordPress "Text Widget" but with additional icon font selector based on <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a>. The Icon will display just before widget title.
 Author: Arya Prakasa
 Author URI: http://prakasa.me/
 
-Version: 0.2
+Version: 0.3
 
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GNU General Public License v2.0 (or later)
+License URI: http://www.opensource.org/licenses/gpl-license.php
 */
 
 class Widget_Text_Icon extends WP_Widget {
@@ -20,13 +20,6 @@ class Widget_Text_Icon extends WP_Widget {
 	 * @var array
 	 */
 	protected $defaults;
-
-	/**
-	 * Default widget values.
-	 *
-	 * @var array
-	 */
-	protected $icon_type;
 
 	/**
 	 * Default widget values.
@@ -54,18 +47,13 @@ class Widget_Text_Icon extends WP_Widget {
 		);
 
 		/**
-		 * Icon type.
-		 */
-		$this->icon_type = array( 'icon-glass', 'icon-music', 'icon-search', 'icon-envelope', 'icon-heart', 'icon-star', 'icon-star-empty', 'icon-user', 'icon-film', 'icon-th-large', 'icon-th', 'icon-th-list', 'icon-ok', 'icon-remove', 'icon-zoom-in', 'icon-zoom-out', 'icon-off', 'icon-signal', 'icon-cog', 'icon-trash', 'icon-home', 'icon-file', 'icon-time', 'icon-road', 'icon-download-alt', 'icon-download', 'icon-upload', 'icon-inbox', 'icon-play-circle', 'icon-repeat', 'icon-refresh', 'icon-list-alt', 'icon-lock', 'icon-flag', 'icon-headphones', 'icon-volume-off', 'icon-volume-down', 'icon-volume-up', 'icon-qrcode', 'icon-barcode', 'icon-tag', 'icon-tags', 'icon-book', 'icon-bookmark', 'icon-print', 'icon-camera', 'icon-font', 'icon-bold', 'icon-italic', 'icon-text-height', 'icon-text-width', 'icon-align-left', 'icon-align-center', 'icon-align-right', 'icon-align-justify', 'icon-list', 'icon-indent-left', 'icon-indent-right', 'icon-facetime-video', 'icon-picture', 'icon-pencil', 'icon-map-marker', 'icon-adjust', 'icon-tint', 'icon-edit', 'icon-share', 'icon-check', 'icon-move', 'icon-step-backward', 'icon-fast-backward', 'icon-backward', 'icon-play', 'icon-pause', 'icon-stop', 'icon-forward', 'icon-fast-forward', 'icon-step-forward', 'icon-eject', 'icon-chevron-left', 'icon-chevron-right', 'icon-plus-sign', 'icon-minus-sign', 'icon-remove-sign', 'icon-ok-sign', 'icon-question-sign', 'icon-info-sign', 'icon-screenshot', 'icon-remove-circle', 'icon-ok-circle', 'icon-ban-circle', 'icon-arrow-left', 'icon-arrow-right', 'icon-arrow-up', 'icon-arrow-down', 'icon-share-alt', 'icon-resize-full', 'icon-resize-small', 'icon-plus', 'icon-minus', 'icon-asterisk', 'icon-exclamation-sign', 'icon-gift', 'icon-leaf', 'icon-fire', 'icon-eye-open', 'icon-eye-close', 'icon-warning-sign', 'icon-plane', 'icon-calendar', 'icon-random', 'icon-comment', 'icon-magnet', 'icon-chevron-up', 'icon-chevron-down', 'icon-retweet', 'icon-shopping-cart', 'icon-folder-close', 'icon-folder-open', 'icon-resize-vertical', 'icon-resize-horizontal', 'icon-bar-chart', 'icon-twitter-sign', 'icon-facebook-sign', 'icon-camera-retro', 'icon-key', 'icon-cogs', 'icon-comments', 'icon-thumbs-up', 'icon-thumbs-down', 'icon-star-half', 'icon-heart-empty', 'icon-signout', 'icon-linkedin-sign', 'icon-pushpin', 'icon-external-link', 'icon-signin', 'icon-trophy', 'icon-github-sign', 'icon-upload-alt', 'icon-lemon', 'icon-phone', 'icon-check-empty', 'icon-bookmark-empty', 'icon-phone-sign', 'icon-twitter', 'icon-facebook', 'icon-github', 'icon-unlock', 'icon-credit-card', 'icon-rss', 'icon-hdd', 'icon-bullhorn', 'icon-bell', 'icon-certificate', 'icon-hand-right', 'icon-hand-left', 'icon-hand-up', 'icon-hand-down', 'icon-circle-arrow-left', 'icon-circle-arrow-right', 'icon-circle-arrow-up', 'icon-circle-arrow-down', 'icon-globe', 'icon-wrench', 'icon-tasks', 'icon-filter', 'icon-briefcase', 'icon-fullscreen', 'icon-group', 'icon-link', 'icon-cloud', 'icon-beaker', 'icon-cut', 'icon-copy', 'icon-paper-clip', 'icon-save', 'icon-sign-blank', 'icon-reorder', 'icon-list-ul', 'icon-list-ol', 'icon-strikethrough', 'icon-underline', 'icon-table', 'icon-magic', 'icon-truck', 'icon-pinterest', 'icon-pinterest-sign', 'icon-google-plus-sign', 'icon-google-plus', 'icon-money', 'icon-caret-down', 'icon-caret-up', 'icon-caret-left', 'icon-caret-right', 'icon-columns', 'icon-sort', 'icon-sort-down', 'icon-sort-up', 'icon-envelope-alt', 'icon-linkedin', 'icon-undo', 'icon-legal', 'icon-dashboard', 'icon-comment-alt', 'icon-comments-alt', 'icon-bolt', 'icon-sitemap', 'icon-umbrella', 'icon-paste', 'icon-user-md' );
-
-		/**
 		 * Icon sizes.
 		 */
-		$this->sizes = array( '16', '24', '32', '48' );
+		$this->sizes = array( '14', '16', '24', '32', '48', '64' );
 
 		$widget_ops = array(
 			'classname'	  => 'widget-text-icon',
-			'description' => __( 'Displays icon before widget title.', 'wti' ),
+			'description' => __( 'Displays icon from FontAwesome before widget title.', 'wti' ),
 		);
 
 		$control_ops = array(
@@ -77,7 +65,7 @@ class Widget_Text_Icon extends WP_Widget {
 		$this->WP_Widget( 'widget-text-icon', __( 'Widget Text Icons', 'wti' ), $widget_ops, $control_ops );
 
 		/** Load font-awesome.css  */
-		add_action( 'wp_head', array( $this, 'css' ), 8 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 8 );
 
 	}
 
@@ -92,19 +80,15 @@ class Widget_Text_Icon extends WP_Widget {
 		/** Merge with defaults */
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 
-		/** sort the array */
-		$icons = (array) $this->icon_type;
-		sort( $icons );
-
 		?>
 
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'wti' ); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose icon', 'wti' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose Icon', 'wti' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
 				<?php
-				foreach ( $icons as $icon ) {
+				foreach ( ayo_fontawesome() as $icons => $icon ) {
 					printf( '<option value="%s" %s>%s</option>', $icon, selected( $icon, $instance['icon'], 0 ), $icon );
 				}
 				?>
@@ -160,15 +144,16 @@ class Widget_Text_Icon extends WP_Widget {
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$text = apply_filters( 'widget_text', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 
-		$size = ( !empty ($instance['size']) ) ? 'font-size: '.$instance['size'].'px;' : '' ;
+		$size = ( ! empty( $instance['size'] ) ) ? 'font-size: '. $instance['size'] .'px;' : '' ;
+		$icon = ( ! empty( $instance['icon'] ) ) ? '<i class="icon-'. $instance['icon'] .'" style="line-height:1em;margin-right:10px;'. $size .'" ></i>' : '';
 
-		$icon = '<i class="'.$instance['icon'].'" style="padding-right:10px;'.$size.'text-align:center;" ></i>';
-		
 		echo $before_widget;
 
-		if ( !empty( $title ) ) { echo $before_title . $icon . $title . $after_title; }?>
+		if ( ! empty( $title ) )
+			echo $before_title . $icon . $title . $after_title;
+		?>
 
-		<div class="textwidget"><?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div>
+		<div class="textwidget-icon"><?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div>
 
 		<?php  echo $after_widget;
 
@@ -176,17 +161,21 @@ class Widget_Text_Icon extends WP_Widget {
 
 	/** Load font-awesome.css if widget active */
 	function css() {
-		global $is_IE;
+		$browser = $_SERVER['HTTP_USER_AGENT'];
+		$browser = substr( "$browser", 25, 8);
 
-		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ ) .'css/font-awesome.css', array(), '0.1', 'all' );
-		wp_register_style( 'font-awesome-ie7', plugin_dir_url( __FILE__ ) .'css/font-awesome-ie7.css', array(), '0.1', 'all' );
-
-		if ( !is_admin() && is_active_widget( false, false, $this->id_base, true ) ) {
-			wp_enqueue_style( 'font-awesome' );
-		} elseif ( !is_admin() && is_active_widget( false, false, $this->id_base, true ) && $is_IE ) {
-			wp_enqueue_style( 'font-awesome' );
-			wp_enqueue_style( 'font-awesome-ie7' );
+	    /** Register Fontawesome v.3.0.2 */
+		if ( ! wp_style_is( "fontawesome", "registered" ) )
+	    	wp_register_style( "fontawesome", "//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css", array(), "3.0.2", "all" );
+		if ( ! wp_style_is( "fontawesome-ie7", "registered" ) )
+			wp_register_style( "fontawesome-ie7", "//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css", array(), "3.0.2", "all" );
+		
+		if ( ! is_admin() && is_active_widget( false, false, $this->id_base, true ) ) {
+			wp_enqueue_style( 'fontawesome' );
+		} elseif ( ! is_admin() && is_active_widget( false, false, $this->id_base, true ) && $browser == "MSIE 7.0" ) {
+			wp_enqueue_style( 'fontawesome-ie7' );
 		}
+
 	}
 
 }
@@ -203,3 +192,274 @@ function wti_load_widget() {
 	register_widget( 'Widget_Text_Icon' );
 
 }
+
+if ( ! function_exists( 'ayo_fontawesome' ) ) :
+/**
+ * This function is an array for listing fontawesome classes
+ *
+ * @since 		0.2.2
+ * @var 		array
+ * @link 		http://fortawesome.github.com/Font-Awesome/
+ * @license  	https://github.com/FortAwesome/Font-Awesome#license
+ * @version 	3.0.2
+ */
+function ayo_fontawesome(){
+
+	$ayo_fontawesome = array(
+		""						=> __( '- Select Icon -', 'wti' ),
+		"glass"					=> "glass",
+		"music"					=> "music",
+		"search"				=> "search",
+		"envelope"				=> "envelope",
+		"heart"					=> "heart",
+		"star"					=> "star",
+		"star-empty"			=> "star-empty",
+		"user"					=> "user",
+		"film"					=> "film",
+		"th-large"				=> "th-large",
+		"th"					=> "th",
+		"th-list"				=> "th-list",
+		"ok"					=> "ok",
+		"remove"				=> "remove",
+		"zoom-in"				=> "zoom-in",
+		"zoom-out"				=> "zoom-out",
+		"off"					=> "off",
+		"signal"				=> "signal",
+		"cog"					=> "cog",
+		"trash"					=> "trash",
+		"home"					=> "home",
+		"file"					=> "file",
+		"time"					=> "time",
+		"road"					=> "road",
+		"download-alt"			=> "download-alt",
+		"download"				=> "download",
+		"upload"				=> "upload",
+		"inbox"					=> "inbox",
+		"play-circle"			=> "play-circle",
+		"repeat"				=> "repeat",
+		"refresh"				=> "refresh",
+		"list-alt"				=> "list-alt",
+		"lock"					=> "lock",
+		"flag"					=> "flag",
+		"headphones"			=> "headphones",
+		"volume-off"			=> "volume-off",
+		"volume-down"			=> "volume-down",
+		"volume-up"				=> "volume-up",
+		"qrcode"				=> "qrcode",
+		"barcode"				=> "barcode",
+		"tag"					=> "tag",
+		"tags"					=> "tags",
+		"book"					=> "book",
+		"bookmark"				=> "bookmark",
+		"print"					=> "print",
+		"camera"				=> "camera",
+		"font"					=> "font",
+		"bold"					=> "bold",
+		"italic"				=> "italic",
+		"text-height"			=> "text-height",
+		"text-width"			=> "text-width",
+		"align-left"			=> "align-left",
+		"align-center"			=> "align-center",
+		"align-right"			=> "align-right",
+		"align-justify"			=> "align-justify",
+		"list"					=> "list",
+		"indent-left"			=> "indent-left",
+		"indent-right"			=> "indent-right",
+		"facetime-video"		=> "facetime-video",
+		"picture"				=> "picture",
+		"pencil"				=> "pencil",
+		"map-marker"			=> "map-marker",
+		"adjust"				=> "adjust",
+		"tint"					=> "tint",
+		"edit"					=> "edit",
+		"share"					=> "share",
+		"check"					=> "check",
+		"move"					=> "move",
+		"step-backward"			=> "step-backward",
+		"fast-backward"			=> "fast-backward",
+		"backward"				=> "backward",
+		"play"					=> "play",
+		"pause"					=> "pause",
+		"stop"					=> "stop",
+		"forward"				=> "forward",
+		"fast-forward"			=> "fast-forward",
+		"step-forward"			=> "step-forward",
+		"eject"					=> "eject",
+		"chevron-left"			=> "chevron-left",
+		"chevron-right"			=> "chevron-right",
+		"plus-sign"				=> "plus-sign",
+		"minus-sign"			=> "minus-sign",
+		"remove-sign"			=> "remove-sign",
+		"ok-sign"				=> "ok-sign",
+		"question-sign"			=> "question-sign",
+		"info-sign"				=> "info-sign",
+		"screenshot"			=> "screenshot",
+		"remove-circle"			=> "remove-circle",
+		"ok-circle"				=> "ok-circle",
+		"ban-circle"			=> "ban-circle",
+		"arrow-left"			=> "arrow-left",
+		"arrow-right"			=> "arrow-right",
+		"arrow-up"				=> "arrow-up",
+		"arrow-down"			=> "arrow-down",
+		"share-alt"				=> "share-alt",
+		"resize-full"			=> "resize-full",
+		"resize-small"			=> "resize-small",
+		"plus"					=> "plus",
+		"minus"					=> "minus",
+		"asterisk"				=> "asterisk",
+		"exclamation-sign"		=> "exclamation-sign",
+		"gift"					=> "gift",
+		"leaf"					=> "leaf",
+		"fire"					=> "fire",
+		"eye-open"				=> "eye-open",
+		"eye-close"				=> "eye-close",
+		"warning-sign"			=> "warning-sign",
+		"plane"					=> "plane",
+		"calendar"				=> "calendar",
+		"random"				=> "random",
+		"comment"				=> "comment",
+		"magnet"				=> "magnet",
+		"chevron-up"			=> "chevron-up",
+		"chevron-down"			=> "chevron-down",
+		"retweet"				=> "retweet",
+		"shopping-cart"			=> "shopping-cart",
+		"folder-close"			=> "folder-close",
+		"folder-open"			=> "folder-open",
+		"resize-vertical"		=> "resize-vertical",
+		"resize-horizontal"		=> "resize-horizontal",
+		"bar-chart"				=> "bar-chart",
+		"twitter-sign"			=> "twitter-sign",
+		"facebook-sign"			=> "facebook-sign",
+		"camera-retro"			=> "camera-retro",
+		"key"					=> "key",
+		"cogs"					=> "cogs",
+		"comments"				=> "comments",
+		"thumbs-up"				=> "thumbs-up",
+		"thumbs-down"			=> "thumbs-down",
+		"star-half"				=> "star-half",
+		"heart-empty"			=> "heart-empty",
+		"signout"				=> "signout",
+		"linkedin-sign"			=> "linkedin-sign",
+		"pushpin"				=> "pushpin",
+		"external-link"			=> "external-link",
+		"signin"				=> "signin",
+		"trophy"				=> "trophy",
+		"github-sign"			=> "github-sign",
+		"upload-alt"			=> "upload-alt",
+		"lemon"					=> "lemon",
+		"phone"					=> "phone",
+		"check-empty"			=> "check-empty",
+		"bookmark-empty"		=> "bookmark-empty",
+		"phone-sign"			=> "phone-sign",
+		"twitter"				=> "twitter",
+		"facebook"				=> "facebook",
+		"github"				=> "github",
+		"unlock"				=> "unlock",
+		"credit-card"			=> "credit-card",
+		"rss"					=> "rss",
+		"hdd"					=> "hdd",
+		"bullhorn"				=> "bullhorn",
+		"bell"					=> "bell",
+		"certificate"			=> "certificate",
+		"hand-right"			=> "hand-right",
+		"hand-left"				=> "hand-left",
+		"hand-up"				=> "hand-up",
+		"hand-down"				=> "hand-down",
+		"circle-arrow-left"		=> "circle-arrow-left",
+		"circle-arrow-right"	=> "circle-arrow-right",
+		"circle-arrow-up"		=> "circle-arrow-up",
+		"circle-arrow-down"		=> "circle-arrow-down",
+		"globe"					=> "globe",
+		"wrench"				=> "wrench",
+		"tasks"					=> "tasks",
+		"filter"				=> "filter",
+		"briefcase"				=> "briefcase",
+		"fullscreen"			=> "fullscreen",
+		"group"					=> "group",
+		"link"					=> "link",
+		"cloud"					=> "cloud",
+		"beaker"				=> "beaker",
+		"cut"					=> "cut",
+		"copy"					=> "copy",
+		"paper-clip"			=> "paper-clip",
+		"save"					=> "save",
+		"sign-blank"			=> "sign-blank",
+		"reorder"				=> "reorder",
+		"list-ul"				=> "list-ul",
+		"list-ol"				=> "list-ol",
+		"strikethrough"			=> "strikethrough",
+		"underline"				=> "underline",
+		"table"					=> "table",
+		"magic"					=> "magic",
+		"truck"					=> "truck",
+		"pinterest"				=> "pinterest",
+		"pinterest-sign"		=> "pinterest-sign",
+		"google-plus-sign"		=> "google-plus-sign",
+		"google-plus"			=> "google-plus",
+		"money"					=> "money",
+		"caret-down"			=> "caret-down",
+		"caret-up"				=> "caret-up",
+		"caret-left"			=> "caret-left",
+		"caret-right"			=> "caret-right",
+		"columns"				=> "columns",
+		"sort"					=> "sort",
+		"sort-down"				=> "sort-down",
+		"sort-up"				=> "sort-up",
+		"envelope-alt"			=> "envelope-alt",
+		"linkedin"				=> "linkedin",
+		"undo"					=> "undo",
+		"legal"					=> "legal",
+		"dashboard"				=> "dashboard",
+		"comment-alt"			=> "comment-alt",
+		"comments-alt"			=> "comments-alt",
+		"bolt"					=> "bolt",
+		"sitemap"				=> "sitemap",
+		"umbrella"				=> "umbrella",
+		"paste"					=> "paste",
+		"lightbulb"				=> "lightbulb",
+		"exchange"				=> "exchange",
+		"cloud-download"		=> "cloud-download",
+		"cloud-upload"			=> "cloud-upload",
+		"user-md"				=> "user-md",
+		"stethoscope"			=> "stethoscope",
+		"suitcase"				=> "suitcase",
+		"bell-alt"				=> "bell-alt",
+		"coffee"				=> "coffee",
+		"food"					=> "food",
+		"file-alt"				=> "file-alt",
+		"building"				=> "building",
+		"hospital"				=> "hospital",
+		"ambulance"				=> "ambulance",
+		"medkit"				=> "medkit",
+		"fighter-jet"			=> "fighter-jet",
+		"beer"					=> "beer",
+		"h-sign"				=> "h-sign",
+		"plus-sign-alt"			=> "plus-sign-alt",
+		"double-angle-left"		=> "double-angle-left",
+		"double-angle-right"	=> "double-angle-right",
+		"double-angle-up"		=> "double-angle-up",
+		"double-angle-down"		=> "double-angle-down",
+		"angle-left"			=> "angle-left",
+		"angle-right"			=> "angle-right",
+		"angle-up"				=> "angle-up",
+		"angle-down"			=> "angle-down",
+		"desktop"				=> "desktop",
+		"laptop"				=> "laptop",
+		"tablet"				=> "tablet",
+		"mobile-phone"			=> "mobile-phone",
+		"circle-blank"			=> "circle-blank",
+		"quote-left"			=> "quote-left",
+		"quote-right"			=> "quote-right",
+		"spinner"				=> "spinner",
+		"circle"				=> "circle",
+		"reply"					=> "reply",
+		"github-alt"			=> "github-alt",
+		"folder-close-alt"		=> "folder-close-alt",
+		"folder-open-alt"		=> "folder-open-alt",
+	);
+
+	asort( $ayo_fontawesome );
+	return apply_filters( 'ayo_fontawesome', $ayo_fontawesome );
+	
+}
+endif; /** end conditional statement for ayo_fontawesome() */
