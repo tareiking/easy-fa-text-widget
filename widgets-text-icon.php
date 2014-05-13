@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Widgets Text Icon
-Plugin URI: https://wordpress.org/extend/plugins/widget-text-icon/
-Description: Basically it just a WordPress "Text Widget" but with additional icon font selector based on <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a>. The Icon will display just before widget title.
-Author: Arya Prakasa
-Author URI: http://prakasa.me/
+Plugin Name: Easy FontAwesome Icon + Text Widget
+Description: A simple widget which creates FontAwesome icon + text area.
+Originally forked from https://github.com/wp-plugins/widget-text-icon by Arya Prakasa.
+Author: Tarei King
+Author URI: http://tarei.me/
 
-Version: 0.3
+Version: 0.1
 
 License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
