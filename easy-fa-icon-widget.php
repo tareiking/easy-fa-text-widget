@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Easy FontAwesome Icon + Text Widget
+Plugin Name: Easy FontAwesome Icon Text Widget
 Description: A simple widget which creates FontAwesome icon + text area.
 Originally forked from https://github.com/wp-plugins/widget-text-icon by Arya Prakasa.
 Author: Tarei King
@@ -12,7 +12,7 @@ License: GNU General Public License v2.0 (or later)
 License URI: http://www.opensource.org/licenses/gpl-license.php
 */
 
-class Widget_Text_Icon extends WP_Widget {
+class Easy_FA_Icon_Text_Widget extends WP_Widget {
 
 	/**
 	 * Default widget values.
@@ -39,16 +39,16 @@ class Widget_Text_Icon extends WP_Widget {
 		);
 
 		$widget_ops = array(
-			'classname'	  => 'widget-text-icon',
+			'classname'	  => 'easy-fa-icon-text-widget',
 			'description' => __( 'Displays icon from FontAwesome before widget title.', 'wti' ),
 		);
 
 		$control_ops = array(
-			'id_base' => 'widget-text-icon',
+			'id_base' => 'easy-fa-icon-text-widget',
 			'width'   => 400,
 		);
 
-		$this->WP_Widget( 'widget-text-icon', __( 'Widget Text Icons', 'wti' ), $widget_ops, $control_ops );
+		$this->WP_Widget( 'easy-fa-icon-text-widget', __( 'Easy Icon Text Widget', 'wti' ), $widget_ops, $control_ops );
 
 		/** Load font-awesome.css  */
 		add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 8 );
@@ -68,7 +68,10 @@ class Widget_Text_Icon extends WP_Widget {
 
 		?>
 
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'wti' ); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'wti' ); ?>:</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
+		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose Icon', 'wti' ); ?>:</label>
@@ -83,7 +86,10 @@ class Widget_Text_Icon extends WP_Widget {
 
 		<textarea class="widefat" rows="14" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo esc_textarea($instance['text']); ?></textarea>
 
-		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label></p>
+		<p>
+			<input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;
+			<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label>
+		</p>
 
 		<?php
 
@@ -124,21 +130,18 @@ class Widget_Text_Icon extends WP_Widget {
 
 		echo $before_widget;
 
+		if ( $icon ) { ?>
+
+			<i class="icon fa fa-<?php echo $icon; ?>"></i>
+
+		<?php }
+
 		if ( isset( $title ) && $title != '' ){ ?>
 			<h3 class="icon-heading">
 				<?php echo $title; ?>
 			</h3>
 
-		<?php
-		}
-
-		if ( $icon ) { ?>
-
-			<i class="icon fa fa-<?php echo $icon; ?>"></i>
-
-		<?php
-			}
-		?>
+		<?php } ?>
 
 		<div class="icon-text">
 			<?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?>
@@ -164,16 +167,16 @@ class Widget_Text_Icon extends WP_Widget {
 
 }
 
-add_action( 'widgets_init', 'wti_load_widget' );
+add_action( 'widgets_init', 'efaitw_load_widget' );
 /**
  * Widget Registration.
  *
  * Register Widget Text Icon.
  *
  */
-function wti_load_widget() {
+function efaitw_load_widget() {
 
-	register_widget( 'Widget_Text_Icon' );
+	register_widget( 'Easy_FA_Icon_Text_Widget' );
 
 }
 

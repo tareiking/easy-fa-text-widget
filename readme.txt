@@ -17,7 +17,7 @@ Likely to be used by SiteOrigin's PageBuilder.
 == Usage ==
 The icons and text are designed to be styled via external css (IE your own stylesheets). The css cascade looks like this (please note this is likely to change)
 
-``.widget-text-icon{
+``.easy-fa-icon-text-widget{
 	.icon-heading {
 
 	}
@@ -29,6 +29,14 @@ The icons and text are designed to be styled via external css (IE your own style
 
 	}
 }``
+
+== Roadmap ==
+
+* May re-introduce widget level icon sizing.
+* May introduce different presentation styles (icon-top, icon-left, icon-right, icon-below)
+* May add icon-preview to the select box (in widget form)
+* May add default css/scss file for extending
+
 
 == Frequently Asked Questions ==
 
