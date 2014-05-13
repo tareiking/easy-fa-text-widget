@@ -141,17 +141,25 @@ class Widget_Text_Icon extends WP_Widget {
 
 		extract( $args );
 
+		var_dump( $instance );
+
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$text = apply_filters( 'widget_text', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 
 		$size = ( ! empty( $instance['size'] ) ) ? 'font-size: '. $instance['size'] .'px;' : '' ;
-		$icon = ( ! empty( $instance['icon'] ) ) ? '<i class="icon-'. $instance['icon'] .'" style="line-height:1em;margin-right:10px;'. $size .'" ></i>' : '';
+		$icon = ( ! empty( $instance['icon'] ) ) ? '<i class="fa fa-'. $instance['icon'] .'" style="line-height:1em;margin-right:10px;'. $size .'" ></i>' : '';
 
 		echo $before_widget;
 
-		if ( ! empty( $title ) )
+		if ( ! empty( $title ) ) {
 			echo $before_title . $icon . $title . $after_title;
+		} else {
+			echo $icon;
+		}
+
 		?>
+
+
 
 		<div class="textwidget-icon"><?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div>
 
@@ -161,19 +169,14 @@ class Widget_Text_Icon extends WP_Widget {
 
 	/** Load font-awesome.css if widget active */
 	function css() {
-		$browser = $_SERVER['HTTP_USER_AGENT'];
-		$browser = substr( "$browser", 25, 8);
 
-	    /** Register Fontawesome v.3.0.2 */
-		if ( ! wp_style_is( "fontawesome", "registered" ) )
-	    	wp_register_style( "fontawesome", "//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css", array(), "3.0.2", "all" );
-		if ( ! wp_style_is( "fontawesome-ie7", "registered" ) )
-			wp_register_style( "fontawesome-ie7", "//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css", array(), "3.0.2", "all" );
+		/** Register Fontawesome v.3.0.2 */
+		if ( ! wp_style_is( "fontawesome", "registered" ) ) {
+			wp_register_style( "fontawesome", "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", array(), "3.0.2", "all" );
+		}
 		
 		if ( ! is_admin() && is_active_widget( false, false, $this->id_base, true ) ) {
 			wp_enqueue_style( 'fontawesome' );
-		} elseif ( ! is_admin() && is_active_widget( false, false, $this->id_base, true ) && $browser == "MSIE 7.0" ) {
-			wp_enqueue_style( 'fontawesome-ie7' );
 		}
 
 	}
@@ -199,15 +202,15 @@ if ( ! function_exists( 'ayo_fontawesome' ) ) :
  *
  * @since 		0.2.2
  * @var 		array
- * @link 		http://fortawesome.github.com/Font-Awesome/
+ * @link 		https://github.com/FortAwesome/Font-Awesome
  * @license  	https://github.com/FortAwesome/Font-Awesome#license
- * @version 	3.0.2
+ * @version 	4.0.3
  */
 function ayo_fontawesome(){
 
 	$ayo_fontawesome = array(
 		""						=> __( '- Select Icon -', 'wti' ),
-		"glass"					=> "glass",
+		"rub"					=> "rub",
 		"music"					=> "music",
 		"search"				=> "search",
 		"envelope"				=> "envelope",
