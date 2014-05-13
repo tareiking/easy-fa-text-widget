@@ -83,7 +83,7 @@ class Widget_Text_Icon extends WP_Widget {
 		?>
 
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'wti' ); ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
-		
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose Icon', 'wti' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
@@ -174,7 +174,7 @@ class Widget_Text_Icon extends WP_Widget {
 		if ( ! wp_style_is( "fontawesome", "registered" ) ) {
 			wp_register_style( "fontawesome", "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", array(), "3.0.2", "all" );
 		}
-		
+
 		if ( ! is_admin() && is_active_widget( false, false, $this->id_base, true ) ) {
 			wp_enqueue_style( 'fontawesome' );
 		}
@@ -582,6 +582,6 @@ function ayo_fontawesome(){
 
 	asort( $ayo_fontawesome );
 	return apply_filters( 'ayo_fontawesome', $ayo_fontawesome );
-	
+
 }
 endif; /** end conditional statement for ayo_fontawesome() */
