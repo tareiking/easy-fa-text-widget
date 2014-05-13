@@ -117,28 +117,32 @@ class Widget_Text_Icon extends WP_Widget {
 	function widget( $args, $instance ) {
 
 		extract( $args );
-
-		var_dump( $instance );
+		extract( $instance );
 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$text = apply_filters( 'widget_text', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 
-		$size = ( ! empty( $instance['size'] ) ) ? 'font-size: '. $instance['size'] .'px;' : '' ;
-		$icon = ( ! empty( $instance['icon'] ) ) ? '<i class="fa fa-'. $instance['icon'] .'" style="line-height:1em;margin-right:10px;'. $size .'" ></i>' : '';
-
 		echo $before_widget;
 
-		if ( ! empty( $title ) ) {
-			echo $before_title . $icon . $title . $after_title;
-		} else {
-			echo $icon;
+		if ( isset( $title ) && $title != '' ){ ?>
+			<h3 class="icon-heading">
+				<?php echo $title; ?>
+			</h3>
+
+		<?php
 		}
 
+		if ( $icon ) { ?>
+
+			<i class="icon fa fa-<?php echo $icon; ?>"></i>
+
+		<?php
+			}
 		?>
 
-
-
-		<div class="textwidget-icon"><?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div>
+		<div class="icon-text">
+			<?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?>
+		</div>
 
 		<?php  echo $after_widget;
 
