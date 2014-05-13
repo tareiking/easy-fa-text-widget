@@ -22,13 +22,6 @@ class Widget_Text_Icon extends WP_Widget {
 	protected $defaults;
 
 	/**
-	 * Default widget values.
-	 *
-	 * @var array
-	 */
-	protected $sizes;
-
-	/**
 	 * Constructor method.
 	 *
 	 * Set some global values and create widget.
@@ -41,15 +34,9 @@ class Widget_Text_Icon extends WP_Widget {
 		$this->defaults = array(
 			'title'		=> '',
 			'icon'		=> '',
-			'size'		=> '16',
 			'text'		=> '',
 			'filter'	=> 0
 		);
-
-		/**
-		 * Icon sizes.
-		 */
-		$this->sizes = array( '14', '16', '24', '32', '48', '64' );
 
 		$widget_ops = array(
 			'classname'	  => 'widget-text-icon',
@@ -59,7 +46,6 @@ class Widget_Text_Icon extends WP_Widget {
 		$control_ops = array(
 			'id_base' => 'widget-text-icon',
 			'width'   => 400,
-			#'height'  => 200,
 		);
 
 		$this->WP_Widget( 'widget-text-icon', __( 'Widget Text Icons', 'wti' ), $widget_ops, $control_ops );
@@ -86,18 +72,10 @@ class Widget_Text_Icon extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'icon' ); ?>"><?php _e( 'Choose Icon', 'wti' ); ?>:</label>
-			<select id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
+			<select class="widefat" id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>">
 				<?php
 				foreach ( ayo_fontawesome() as $icons => $icon ) {
 					printf( '<option value="%s" %s>%s</option>', $icon, selected( $icon, $instance['icon'], 0 ), $icon );
-				}
-				?>
-			</select>
-			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Size', 'wti' ); ?>:</label>
-			<select id="<?php echo $this->get_field_id( 'size' ); ?>" name="<?php echo $this->get_field_name( 'size' ); ?>">
-				<?php
-				foreach ( (array) $this->sizes as $size ) {
-					printf( '<option value="%d" %s>%dpx</option>', (int) $size, selected( $size, $instance['size'], 0 ), (int) $size );
 				}
 				?>
 			</select>
@@ -121,7 +99,6 @@ class Widget_Text_Icon extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['icon'] = $new_instance['icon'];
-		$instance['size'] = $new_instance['size'];
 
 		if ( current_user_can('unfiltered_html') )
 			$instance['text'] =  $new_instance['text'];
