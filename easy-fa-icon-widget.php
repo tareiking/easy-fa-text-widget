@@ -15,28 +15,12 @@ License URI: http://www.opensource.org/licenses/gpl-license.php
 class Easy_FA_Icon_Text_Widget extends WP_Widget {
 
 	/**
-	 * Default widget values.
-	 *
-	 * @var array
-	 */
-	protected $defaults;
-
-	/**
 	 * Constructor method.
 	 *
 	 * Set some global values and create widget.
 	 */
 	function __construct() {
 
-		/**
-		 * Default widget option values.
-		 */
-		$this->defaults = array(
-			'title'		=> '',
-			'icon'		=> '',
-			'text'		=> '',
-			'filter'	=> 0
-		);
 
 		$widget_ops = array(
 			'classname'	  => 'easy-fa-icon-text-widget',
@@ -64,7 +48,15 @@ class Easy_FA_Icon_Text_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		/** Merge with defaults */
-		$instance = wp_parse_args( (array) $instance, $this->defaults );
+		$instance = wp_parse_args( (array) $instance,  array(
+			'title'		=> '',
+			'icon'		=> '',
+			'text'		=> '',
+			'filter'	=> 0
+			) );
+
+		$title = strip_tags($instance['title']);
+		$text = esc_textarea($instance['text']);
 
 		?>
 
