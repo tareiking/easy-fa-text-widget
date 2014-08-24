@@ -52,11 +52,13 @@ class Easy_FA_Icon_Text_Widget extends WP_Widget {
 			'title'		=> '',
 			'icon'		=> '',
 			'text'		=> '',
-			'filter'	=> 0
+			'filter'	=> 0,
+			'link'		=> '',
 			) );
 
 		$title = strip_tags($instance['title']);
 		$text = esc_textarea($instance['text']);
+		$link = $instance['link'];
 
 		?>
 
@@ -77,6 +79,8 @@ class Easy_FA_Icon_Text_Widget extends WP_Widget {
 
 		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label></p>
 
+		<p><label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link URL:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('link'); ?>" name="<?php echo $this->get_field_name('link'); ?>" type="text" value="<?php echo esc_attr($link); ?>" /></p>
+
 		<?php
 
 	}
@@ -92,6 +96,7 @@ class Easy_FA_Icon_Text_Widget extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['icon'] = $new_instance['icon'];
+		$instance['link'] = $new_instance['link'];
 
 		if ( current_user_can('unfiltered_html') )
 			$instance['text'] =  $new_instance['text'];
@@ -116,24 +121,31 @@ class Easy_FA_Icon_Text_Widget extends WP_Widget {
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$text = apply_filters( 'widget_text', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 
-		echo $before_widget;
+		echo $before_widget; ?>
 
-		if ( $icon ) { ?>
+		<!-- link -->
+		<?php if ( $link != '' ): ?>
+			<a href="<?php echo $link; ?>">
+		<?php endif ?>
 
+		<!-- icon -->
+		<?php if ( $icon ) { ?>
 			<i class="icon fa fa-<?php echo $icon; ?>"></i>
-
 		<?php }
 
 		if ( isset( $title ) && $title != '' ){ ?>
 			<h3 class="icon-heading">
 				<?php echo $title; ?>
 			</h3>
-
 		<?php } ?>
 
 		<div class="icon-text">
 			<?php echo ! empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?>
 		</div>
+
+		<?php if ( $link != '' ): ?>
+		</a>
+		<?php endif ?>
 
 		<?php  echo $after_widget;
 
